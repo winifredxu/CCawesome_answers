@@ -1,0 +1,16 @@
+<h1>List All questions </h1>
+
+<h2> most recent (x=3) questions</h2>
+<% @questions_recent.each do |q| %>
+	<h2> <%= link_to q.title, question_path(q) %></h2>
+	<%#= link_to q.title, q %>
+	<p><%= q.body %></p>
+<% end %>
+
+<hr><br>
+<h2>all questions in 'title ASC' order</h2>
+<% @entire_questions.each do |q| %>
+	<h2> <%= link_to q.title, question_path(q) %></h2>
+	<%#= link_to q.title, q %>
+	<p><%= q.body %></p>
+<% end %>

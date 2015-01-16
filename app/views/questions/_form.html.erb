@@ -1,0 +1,20 @@
+<% if @question.errors.any? %>
+	<ul>
+	<% @question.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+	</ul>
+<% end %>
+
+<%= form_for @question do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :body %>
+<%= f.text_area :body %>
+<br>
+<%= f.label :view_count %>
+<%= f.text_area :view_count %>
+<br>
+<%= f.submit %>
+<% end %>
