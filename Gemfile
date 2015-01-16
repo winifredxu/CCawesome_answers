@@ -36,6 +36,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #gem 'eventmachine'  # some people had problems with DB 
 gem 'thin'  #this requires the web server to be Thin, only works for Thin though
+
 gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
 gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
 #gem 'autoprefixer'  # used for SASS for bootstrap
