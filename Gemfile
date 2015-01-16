@@ -35,15 +35,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem "colorize"   # added to the group:development below
 
 gem 'thin'  #this requires the web server to be Thin, only works for Thin though
-
-
+gem 'bootstrap-sass'  # this is to include using 'bootstrap' CSS
 group :development do 
-	gem "colorize"
-	gem "interactive_editor"
-	gem "hirb"
-	gem "awesome_print"
-  gem "faker"
+        gem "colorize"
+        gem "interactive_editor"
+        gem "hirb"
+        gem "awesome_print"
+        
+        gem "quiet_assets"
+        gem "faker"
 end
+
+d
 
 group :development, :test do
 
