@@ -36,6 +36,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'thin'  #this requires the web server to be Thin, only works for Thin though
 gem 'bootstrap-sass'  # this is to include using 'bootstrap' CSS
+gem 'rails_12factor'  # for bootstrap to work while pushed to Heroku
+
 group :development do 
         gem "colorize"
         gem "interactive_editor"
@@ -45,8 +47,6 @@ group :development do
         gem "quiet_assets"
         gem "faker"
 end
-
-d
 
 group :development, :test do
 
