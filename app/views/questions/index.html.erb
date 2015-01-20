@@ -9,6 +9,7 @@
 
 <hr width="80%"><br>
 
+
 <h2>all questions in 'title ASC' order</h2>
 <% @entire_questions.each do |q| %>
 	<h2> <%= link_to q.title, question_path(q) %></h2>
