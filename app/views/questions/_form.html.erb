@@ -7,21 +7,20 @@
 <% end %>
 
 <%= form_for @question do |f| %>
-<div class="form-group">
-<%= f.label :title %>
-<%= f.text_field :title %>
-</div>
-<br>
-<div class="form-group">
-<%= f.label :body %>
-<%= f.text_area :body %>
-</div>
-<br>
-<div class="form-group">
-<%= f.label :view_count %>
-<%= f.text_area :view_count %>
-</div>
-<br>
-<%= f.submit %>
-
+	<div class="form-group">
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</div>
+	<br>
+	<div class="form-group">
+		<%= f.label :body %>
+		<%= f.text_area :body %>
+	</div>
+	<br>
+	<div class="form-group">
+		<%= f.label :view_count %>
+		<%= f.text_area :view_count %>
+	</div>
+	<br>
+	<%= f.submit %>
 <% end %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users  # added by gem 'devise'
   ### CodeCore class add-on
   get "/hello"  =>  "welcome#hello"  
   get "/about"  =>  "welcome#about"
@@ -11,9 +12,14 @@ Rails.application.routes.draw do
   #get "/questions/:id/edit" => "questions#edit", as: :edit_question
   #patch "/questions/:id" =>  "questions#update"
   #delete "/question/:id" => "questions#destroy"
-  resources :questions   #7 methods automatically condensed into this resources line
-  resources :answers  # sample adds 7 methods to answers
 
+  resources :questions do  #7 methods automatically with resources line
+    resources :answers, only: [:create, :destroy]  # only 2 answers control methods
+  end  #nested answers under questions routes, see 'rails/info/routes'
+
+  resources :answers, only: [] do   #don't need all the answers path 
+    resources :comments, only: [:create, :destroy] # nested comments under answers path
+  end
 
   root "welcome#index"  # this is same as   get "/" do ....  only 1 per site
 

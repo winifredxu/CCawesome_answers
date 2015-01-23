@@ -34,22 +34,27 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # gem "colorize"   # added to the group:development below
 
+#gem 'eventmachine'  # some people had problems with DB 
 gem 'thin'  #this requires the web server to be Thin, only works for Thin though
-gem 'bootstrap-sass'  # this is to include using 'bootstrap' CSS
-gem 'rails_12factor'  # for bootstrap to work while pushed to Heroku
+gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
+gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
+#gem 'autoprefixer'  # used for SASS for bootstrap
+gem 'devise'         # authentication module
+
+gem 'haml-rails'
+gem 'slim-rails'
 
 group :development do 
         gem "colorize"
         gem "interactive_editor"
         gem "hirb"
         gem "awesome_print"
-        
-        gem "quiet_assets"
-#        gem "faker"
 end
 
 group :development, :test do
-
+#  gem "pry-rails"
+#  gem "pry-byebug"
+  gem "quiet_assets"  #rails log does not show the assets (js, css) related entries
   gem 'faker'  #CodeCore added for homework purposes, generates a bunch of Fake information/data
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

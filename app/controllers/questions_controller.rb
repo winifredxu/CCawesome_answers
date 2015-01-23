@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-	before_action:find_question, only: [:show, :edit, :update, :destroy] #:new, :create, :index does not need individual element IDs
+	before_action :find_question, only: [:show, :edit, :update, :destroy] #:new, :create, :index does not need individual element IDs
+	before_action :authenticate_user!, except: [:index, :show]
 
 	
 	# used to show the form to create the resource, "new" action leads to "create" submit in form
@@ -13,6 +14,8 @@ class QuestionsController < ApplicationController
 		# refractored into def question_params method
 
 		@question = Question.new question_params
+		@question.user = current_user # this adds the user_id to the questions DB table
+		
 		if @question.save
 			#render text: "thank you!"
 			# shortcut for this is below:  redirect_to question_path(@question)
@@ -21,7 +24,7 @@ class QuestionsController < ApplicationController
 		else
 			#show the form again with error
 			
-			#render the new.html.erb again here. 	
+			#render "questions/new" -- the new.html.erb again here, short hand below	
 			render :new  # layout: new_layout
 
 		end
@@ -30,14 +33,15 @@ class QuestionsController < ApplicationController
 
 	def show
 		#render text:params
-
 		#find is set in before_action
-
 		if @question != nil
 			# @question.view_count +=1
 			# @question.save
 			@question.increment!(:view_count)
 		end
+
+		@answer = Answer.new
+#		@answers = @question.answers   # move this to show.html.erb @question.answers.each
 	end	
 
 	def index
@@ -59,6 +63,7 @@ class QuestionsController < ApplicationController
 		if @question.update question_params
 			redirect_to @question, notice: "Question updated successfully"
 		else
+			# render "questions/edit"
 			render :edit
 		end
 	end

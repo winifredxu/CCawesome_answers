@@ -7,13 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<a href="/">Home</a>  | <a href="/hello">Hello</a> | <a href="/about">About Us</a> |
+<a href="/">Home</a>  | 
+<a href="/hello">Hello</a> | 
+<a href="/about">About Us</a> |
 
 <!-- href hardcodes in the address, but 'link_to' is better because you only have to change it routes.rb one file should you change the URL path --> 
 <%= link_to "New Question", new_question_path %>  ||
-<%= link_to "INDEX ALL questions", questions_path %>
+<%= link_to "INDEX ALL questions", questions_path %> |
 
-<%= flash[:notice] || flash[:error] %>
+<!-- gem 'devise' sign-out button, only show OUT if user is signed IN first-->
+<% if user_signed_in? %>
+	Hello <%= current_user.first_name %>,
+	<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% else %>
+	<%= link_to "Sign In", new_user_session_path, method: :get %>
+<% end %>
+
+<!-- flash notice and alert for gem 'devise' usage -->
+<%= flash[:notice] || flash[:alert] %>
 <%= yield %>
 
 </body>

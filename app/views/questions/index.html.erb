@@ -11,8 +11,25 @@
 
 
 <h2>all questions in 'title ASC' order</h2>
-<% @entire_questions.each do |q| %>
-	<h2> <%= link_to q.title, question_path(q) %></h2>
-	<%#= link_to q.title, q %>
-	<p><%= q.body %></p>
-<% end %>
+<table width="80%" border="1">
+	<tr>
+		<th>question title</th>
+		<th>question body</th>
+	</tr>
+
+	<% @entire_questions.each do |q| %>
+		<tr>
+			<th>
+				<%#= link_to q.title, question_path(q) %>
+				<!-- this is the short hand with only the instance varaible -->
+				<%= link_to q.title, q %> 
+			</th>
+			<th>
+				<%= q.body %>
+			</th>
+		</tr>
+	<% end %>
+	<% if @entire_questions.length == 0 %>
+		<em>No question found! </em>
+	<% end %>
+</table>

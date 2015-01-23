@@ -1,4 +1,10 @@
 class Question < ActiveRecord::Base
+	belongs_to :user
+	has_many :answers, dependent: :destroy  #one to many ERD related, 
+	# some times has dependent: nullify
+	has_many :comments, through: :answers  #associate question with many comments, through answers
+
+
 	validates :title, presence: true, uniqueness: {scope: :body, case_sensitive: false}
 	validates :body, presence: { message: "must be provided!"}
 
@@ -20,6 +26,10 @@ class Question < ActiveRecord::Base
 	scope :last_x_days, lambda { |x| where(created_at: x.days.ago..Time.now) }
 #scope :last_y_days, lambda { |y| order("updated_at  < CURRENT_DATE - INTEVAL '#{}'")}
 #scope :last_z_days, lambda { |z| where("created_at > ?", num.days.ago) }
+
+	def user_first_name
+		user.first_name if user
+	end
 
 	private
 
