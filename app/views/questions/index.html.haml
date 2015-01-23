@@ -1,0 +1,6 @@
+%h1 List All questions 
+- @entire_questions.each do |q| 
+	-#= link_to q.title, question_path(q)
+	.well
+		%h2= link_to q.title, q
+		%p= q.body

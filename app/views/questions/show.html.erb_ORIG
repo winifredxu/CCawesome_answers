@@ -1,3 +1,4 @@
+<h1 class="ex" style="display: inline-block">Example</h1>
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
 <p>Created by: <%= @question.user_first_name %></p>
