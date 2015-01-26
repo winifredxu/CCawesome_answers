@@ -1,8 +1,8 @@
 <% if @question.errors.any? %>
 	<ul>
-	<% @question.errors.full_messages.each do |msg| %>
+		<% @question.errors.full_messages.each do |msg| %>
 		<li><%= msg %></li>
-	<% end %>
+		<% end %>
 	</ul>
 <% end %>
 
@@ -22,5 +22,5 @@
 		<%= f.text_area :view_count, class: "form-control" %>
 	</div>
 	<br>
-	<%= f.submit, class: "btn btn-primary" %>
+	<%= f.submit class: "btn btn-primary" %>
 <% end %>
