@@ -4,6 +4,11 @@ class Question < ActiveRecord::Base
 	# some times has dependent: nullify
 	has_many :comments, through: :answers  #associate question with many comments, through answers
 
+  has_many :likes, dependent: :destroy #association with LIKE model
+  has_many :liked_users, through: :likes, source: :user
+
+  has_many :favorites, dependent: :destroy #associate with FAVORITE model
+  has_many :favorited_users, through: :favorites, source: :user
 
 	validates :title, presence: true, uniqueness: {scope: :body, case_sensitive: false}
 	validates :body, presence: { message: "must be provided!"}
@@ -26,6 +31,10 @@ class Question < ActiveRecord::Base
 	scope :last_x_days, lambda { |x| where(created_at: x.days.ago..Time.now) }
 #scope :last_y_days, lambda { |y| order("updated_at  < CURRENT_DATE - INTEVAL '#{}'")}
 #scope :last_z_days, lambda { |z| where("created_at > ?", num.days.ago) }
+
+	def likes_count
+		likes.count    # length() is less accurate than count() in the DB.
+	end
 
 	def user_first_name
 		user.first_name if user

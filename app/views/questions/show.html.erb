@@ -1,17 +1,28 @@
-<h1 class="ex" style="display: inline-block">Example</h1>
+<!--h1 class="ex" style="display: inline-block">Example</h1-->
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
 <p>Created by: <%= @question.user_first_name %></p>
 <p>View count: <%= @question.view_count %></p>
+<p>Like count: <%= @question.likes_count %></p>
 
 <%= link_to "Edit question", edit_question_path(@question) %>
 <%= link_to "Delete question", 	question_path(@question), 
 	method: :delete, 	data: {confirm: "are you sure?"} %>
 
-<hr><h2>Create an answer</h2>
-<%= render "answers/form" %>  <!-- refactor answer form into answer's view folder partial form -->
+<!-- button_to puts a button inside the form_for post, while link_to is just inside <a> tag -->
+<%#= button_to "Like", question_likes_path(@question), class: "btn btn-info" %>
+<% if user_signed_in? && current_user.has_liked?(@question) %>
+	<%# @like = Like.find(question_id: @question.id, user_id: current_user.id) %>
+	<% @like = current_user.likes.find_by_question_id(@question.id) %>
+	<%= link_to "Unlike", question_like_path(@question, @like), class: "btn btn-danger", method: :delete %>
+<% else %>
+	<%= link_to "Like", question_likes_path(@question), class: "btn btn-info", method: :post %>
+<% end %>
 
-<h2>Answers </h2>  <!-- loop through answers list and print them all -->
+<hr><h2>Create an answer</h2>
+<%= render "/answers/form" %>  <!-- refactor answer form into answer's view folder partial form -->
+
+<h2>Answers</h2>  <!-- loop through answers list and print them all -->
 <% @question.answers.each do |answer| %>
 	<%= answer.body %> 
 	<p>Answer by: <%= answer.user_first_name %></p>
