@@ -55,7 +55,7 @@ class QuestionsController < ApplicationController
 	def edit
 		#find is set in before_action
 	end
-
+ideas#index
 	def update
 		#find is set in before_action	
 		#question_params was a variable before, now set as a method below
@@ -80,7 +80,7 @@ class QuestionsController < ApplicationController
 
 	def question_params
 		# use strong params to ensure only the fields explicitly stated are allowed
-		params.require(:question).permit([:title, :body])
+		params.require(:question).permit(:title, :body, {category_ids: []} )
 	end
 
 end

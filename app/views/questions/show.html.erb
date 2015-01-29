@@ -1,9 +1,11 @@
 <!--h1 class="ex" style="display: inline-block">Example</h1-->
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
+<p>Categories: <%= @question.categories.map(&:name).join(", ") %></p>
 <p>Created by: <%= @question.user_first_name %></p>
 <p>View count: <%= @question.view_count %></p>
 <p>Like count: <%= @question.likes_count %></p>
+<p>Favorite count: <%= @question.favorites_count %></p>
 
 <%= link_to "Edit question", edit_question_path(@question) %>
 <%= link_to "Delete question", 	question_path(@question), 
@@ -17,6 +19,13 @@
 	<%= link_to "Unlike", question_like_path(@question, @like), class: "btn btn-danger", method: :delete %>
 <% else %>
 	<%= link_to "Like", question_likes_path(@question), class: "btn btn-info", method: :post %>
+<% end %>
+
+<% if user_signed_in? && current_user.has_favorited?(@question) %>
+	<% @favorite = current_user.favorites.find_by_question_id(@question.id) %>
+	<%= link_to "Unfav", question_favorite_path(@question, @favorite), class: "btn btn-danger", method: :delete %>
+<% else %>
+	<%= link_to "Fav", question_favorites_path(@question), class: "btn btn-info", method: :post %>
 <% end %>
 
 <hr><h2>Create an answer</h2>

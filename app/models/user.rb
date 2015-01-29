@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   	liked_questions.include? question
   end
 
+  def has_favorited?(question)
+  	favorited_questions.include? question
+  end
+  
 end

@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :questions do  #7 methods automatically with resources line
     resources :answers, only: [:create, :destroy]  # only 2 answers control methods
     resources :likes, only: [:create, :destroy]
-  end  #nested answers under questions routes, see 'rails/info/routes'
+    resources :favorites, only: [:create, :destroy]
+  end  #nested answers under questions routes, see 'rail  validates :question_id, uniqueness: {scope: :user_id}
 
   resources :answers, only: [] do   #don't need all the answers path 
     resources :comments, only: [:create, :destroy] # nested comments under answers path

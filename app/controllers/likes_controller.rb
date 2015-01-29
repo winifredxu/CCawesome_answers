@@ -8,12 +8,12 @@ class LikesController < ApplicationController
 		if like.save
 			redirect_to @question, notice: "Liked!"
 		else
-			redirect_to @question, alert: "Liked already."
+			redirect_to @question, alert: "Liked already!"
 		end
 	end
 
 	def destroy
-		like = @question.likes.find(params[:id]);
+		like = @question.likes.find(params[:id])
 		if like.destroy
 			redirect_to @question, notice: "Unliked successfully"
 		else

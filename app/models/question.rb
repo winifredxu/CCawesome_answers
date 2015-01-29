@@ -10,10 +10,13 @@ class Question < ActiveRecord::Base
   has_many :favorites, dependent: :destroy #associate with FAVORITE model
   has_many :favorited_users, through: :favorites, source: :user
 
+  has_many :categorizations, dependent: :destroy
+  has_many :categories, through: :categorizations
+  
 	validates :title, presence: true, uniqueness: {scope: :body, case_sensitive: false}
 	validates :body, presence: { message: "must be provided!"}
 
-	validates :view_count, numericality: {greater_than_or_equal_to: 0}
+	#validates :view_count, numericality: {greater_than_or_equal_to: 0}
 
 	validate :stop_words
 
@@ -34,6 +37,10 @@ class Question < ActiveRecord::Base
 
 	def likes_count
 		likes.count    # length() is less accurate than count() in the DB.
+	end
+	
+	def favorites_count
+		favorites.count
 	end
 
 	def user_first_name

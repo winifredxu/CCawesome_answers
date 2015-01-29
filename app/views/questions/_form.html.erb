@@ -18,8 +18,8 @@
 	</div>
 	<br>
 	<div class="form-group">
-		<%= f.label :view_count %>
-		<%= f.text_area :view_count, class: "form-control" %>
+		<%= f.label :category_id %>
+		<%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
 	</div>
 	<br>
 	<%= f.submit class: "btn btn-primary" %>
