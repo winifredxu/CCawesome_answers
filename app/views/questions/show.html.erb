@@ -7,6 +7,8 @@
 <p>Like count: <%= @question.likes_count %></p>
 <p>Favorite count: <%= @question.favorites_count %></p>
 
+<p> Created on: <%= @question.created_at.strftime("%Y-%B-%d") %></p>
+
 <%= link_to "Edit question", edit_question_path(@question) %>
 <%= link_to "Delete question", 	question_path(@question), 
 	method: :delete, 	data: {confirm: "are you sure?"} %>
@@ -52,6 +54,8 @@
 	<% answer.comments.each do |comment| %>
 		<div class="well">
 			<%= comment.body %>  
+			<%= standard_date(comment.created_at) %>
+			
 			<%= " | Comment by: #{comment.user_first_name}  " %> 
 			<%= link_to "Delete comment", answer_comment_path(answer.id, comment.id), method: :delete, data: {confirm: "delete this comment for real?"}, class: "btn btn-sm btn-danger" %>
 		</div>

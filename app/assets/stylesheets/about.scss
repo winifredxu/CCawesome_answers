@@ -1,0 +1,15 @@
+@import "default";
+
+.special-container {
+	color: $primary-color;
+	font-size: $text-font-size + 1;
+//	@include border-radius(10px);
+}
+
+.special-container:hover {
+	color: lighten($primary-color, 3%);
+}
+
+body {
+	background: url(asset-path("Elephant_ashes.jpg"));
+}

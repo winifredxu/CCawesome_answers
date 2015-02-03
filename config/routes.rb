@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy] # nested comments under answers path
   end
 
+  # delayed_job and delayed_job_web routing
+  match "delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   root "welcome#index"  # this is same as   get "/" do ....  only 1 per site
 

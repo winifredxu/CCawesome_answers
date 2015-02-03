@@ -20,8 +20,9 @@
 $ ->
 #append button here or add a button to the ERB page:	<%= link_to "Click me", "javascript:void(0);", class: "btn btn-primary" %>
 
-	$('body').append("<button class='btn btn-primary btn1'>Ex 1</button>")
-	$('body').append("<button class='btn btn-primary btn2'>Ex 2</button>")
+# add buttons to the About.html page directly
+#	$('body').append("<button class='btn btn-primary btn1'>Ex 1</button>")
+#	$('body').append("<button class='btn btn-primary btn2'>Ex 2</button>")
 
 	$('.btn1').click ->
 			$(@).toggleClass("btn-danger")
@@ -37,13 +38,14 @@ $ ->
   capitalize = (word) ->
     word.charAt(0).toUpperCase() + word.slice(1)
 
-  ex3 = ->
-    $("#ex3-entry").keyup ->
-        word_array = $(@).val().split(" ")
 
-        console.log word_array
-  #      result = word_array.map(word) -> capitalize(word)
-        #capitalize for word in word_array
-        $("#ex3-output").text( word_array.join(" ") )
+  $("#ex3-entry").keyup ->
+    word_array = $(@).val().split(" ")
+
+    console.log word_array
+    # map (word) <-- spacing does matter!
+    result = word_array.map (word) -> capitalize(word)
+    #result = capitalize for word in word_array
+    $("#ex3-output").text( result.join(" ") )
 
 

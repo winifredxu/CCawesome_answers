@@ -9,7 +9,7 @@
 	<body>
 		<div class="container">
 
-			<a href="/">Home</a>  | <a href="/hello">Hello</a> | <a href="/about">About Us</a> |
+			<a href="/" class="animated rubberBand">Home</a>  | <a href="/hello">Hello</a> | <a href="/about">About Us</a> |
 			<!-- href hardcodes in the address, but 'link_to' is better because you only have to change it routes.rb one file should you change the URL path --> 
 			<%= link_to "New Question", new_question_path %>  ||
 			<%= link_to "INDEX ALL questions", questions_path %> |

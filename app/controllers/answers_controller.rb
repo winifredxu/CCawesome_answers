@@ -11,7 +11,10 @@ class AnswersController < ApplicationController
 		#@answer = @question.answers.new answer_params
 		@answer.user = current_user
 
+
 		if @answer.save 
+			#AnswersMailer.notify_question_owner(@answer).deliver
+			AnswersMailer.notify_question_owner(@answer).deliver_later
 			#redirect_to question_path(@question)  --> this is the long hand
 			redirect_to @question, notice: "Answer created successfully."
 		else

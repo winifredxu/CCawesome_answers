@@ -36,20 +36,25 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #gem 'eventmachine'  # some people had problems with DB 
 gem 'thin'  #this requires the web server to be Thin, only works for Thin though
-
+gem 'animate-rails'  # this is for animation through CSS effects
 gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
 gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
 #gem 'autoprefixer'  # used for SASS for bootstrap
 gem 'devise'         # authentication module
 
-gem 'haml-rails'
-gem 'slim-rails'
+#gem 'haml-rails'
+#gem 'slim-rails'
+#gem 'premailer' #inline styling for Emails
+
+gem 'delayed_job_active_record'  #for background process of blocking tasks
+gem 'delayed_job_web'         #UI for seeing the queued tasks
 
 group :development do 
         gem "colorize"
         gem "interactive_editor"
         gem "hirb"
         gem "awesome_print"
+        gem "letter_opener"
 end
 
 group :development, :test do
