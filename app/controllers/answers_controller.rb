@@ -11,15 +11,22 @@ class AnswersController < ApplicationController
 		#@answer = @question.answers.new answer_params
 		@answer.user = current_user
 
+		respond_to do |format|  # this is for AJAX
 
-		if @answer.save 
-			#AnswersMailer.notify_question_owner(@answer).deliver
-			AnswersMailer.notify_question_owner(@answer).deliver_later
-			#redirect_to question_path(@question)  --> this is the long hand
-			redirect_to @question, notice: "Answer created successfully."
-		else
-			render "questions/show"  #render takes the template, this is the ERB file path
+			if @answer.save 
+				#AnswersMailer.notify_question_owner(@answer).deliver
+				AnswersMailer.notify_question_owner(@answer).deliver_later
+				#redirect_to question_path(@question)  --> this is the long hand
+				#redirect_to @question, notice: "Answer created successfully."
+				format.html {redirect_to @question, notice: "Answer created successfully."}
+				format.js { render } #render to "/answers/create.js.erb" success case
+				#format.js { render js: "alert('success');" }
+			else
+				format.html { render "questions/show" } #render takes the template, this is the ERB file path
+				format.js { render }  #render to "/answers/create.js.erb" failure case
+			end
 		end
+
 	end
 
 	def destroy
@@ -28,7 +35,12 @@ class AnswersController < ApplicationController
 		{"_method"=>"delete", "authenticity_token"=>"fodM4cGxGDB4b9w/q0pBRCFpwdWDyLda28OunH6CSEZm7SG3bhXx4JhPaHqfHwJ1i1w0vY4kkCgZYSUdbwv+mQ==", "controller"=>"answers", "action"=>"destroy", "question_id"=>"4", "id"=>"18"}
 =end
 		@answer.destroy
-		redirect_to question_path(@question), notice: "Answer deleted successfully"
+		respond_to do |format|
+			format.js { render }  #this is rendering "comments/destroy.js.erb"
+			#format.js { render js: "alert('deleted');"} 
+			#in JS, do not redirect_to, only use    window.location.reload();
+			format.html { redirect_to question_path(@question), notice: "Answer deleted successfully" }
+		end
 	end
 
 	private

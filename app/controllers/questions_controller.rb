@@ -42,6 +42,12 @@ class QuestionsController < ApplicationController
 
 		@answer = Answer.new
 #		@answers = @question.answers   # move this to show.html.erb @question.answers.each
+		respond_to do |format|
+			format.html { render }
+			format.json { render json: @question.to_json }
+			format.text { render text: @question.title }
+			format.xml  { render xml: @question.to_xml }
+		end
 	end	
 
 	def index

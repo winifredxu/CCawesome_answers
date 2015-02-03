@@ -9,11 +9,15 @@ class CommentsController < ApplicationController
 		@comment.answer = @answer
 		# @comment.answer_id = @answer.id   <-- shorter line above
 		@comment.user = current_user
-		if @comment.save 
-			#redirect_to question_path(@answer.question)  --> this is the long hand
-			redirect_to @answer.question, notice: "Comment created successfully."
-		else
-			render "questions/show"  #render takes the template, this is the ERB file path
+		respond_to do |format|
+			if @comment.save 
+				format.js { render }  #rendering "/comments/create.js.erb" file
+				format.html { redirect_to @answer.question, notice: "Comment created successfully." }	
+				#redirect_to question_path(@answer.question)  --> this is the long hand
+			else
+				format.js { render } #rendering "/comments/create.js.erb" file
+				format.html { render "questions/show" }  #render takes the template, this is the ERB file path
+			end
 		end
 	end
 
@@ -21,7 +25,10 @@ class CommentsController < ApplicationController
 		@comment.destroy
 		#redirect_to @comment.answer.question, notice: "Comment deleted successfully" 
 		# use comment.rb's delegate method instead
-		redirect_to @comment.question, notice: "Comment deleted successfully"
+		respond_to do |format|
+			format.js { render } #rendering "/comments/destroy.js.erb" file
+			format.html { redirect_to @comment.question, notice: "Comment deleted successfully" }
+		end
 	end
 
 	private

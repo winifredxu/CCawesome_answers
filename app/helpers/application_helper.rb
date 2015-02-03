@@ -1,6 +1,6 @@
 module ApplicationHelper
 	
-	def stdDate
+	def stdDate(date)
 		date.strftime("%Y-%B-%d") if date
 	end
 

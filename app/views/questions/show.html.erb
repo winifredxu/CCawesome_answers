@@ -31,34 +31,15 @@
 <% end %>
 
 <hr><h2>Create an answer</h2>
-<%= render "/answers/form" %>  <!-- refactor answer form into answer's view folder partial form -->
+<div class="answer-form">
+	<%= render "/answers/form" %>  <!-- refactor answer form into answer's view folder partial form -->
+</div>
 
 <h2>Answers</h2>  <!-- loop through answers list and print them all -->
-<% @question.answers.each do |answer| %>
-	<%= answer.body %> 
-	<p>Answer by: <%= answer.user_first_name %></p>
-	<%= link_to "Delete", question_answer_path(@question.id, answer.id), method: "delete", data: {confirm: "delete this answer for real?"}, class: "btn btn-sm btn-danger"  %>
-	<%#= button_to "Delete", question_answer_path(@question.id, answer.id), method: :delete, data: {confirm: "delete this answer for real?"}, class: "btn btn-sm btn-danger" %>
+<%#= render @quesstion.answers %>
 
-	<p></p>
-	<!-- @comment || Comment.new    so we don't have to insert Comment.new in both Questions and Answers controller page.  -->
-	<%= form_for [answer, @comment || Comment.new] do |f| %>
-		<div class="form-group">
-			<%= f.label :body %>
-			<%= f.text_area :body, class: "form-control", placeholder: "Enter a comment", rows: 1 %>
-		</div>
-		<%= f.submit class: "btn btn-info btn-sm" %>
+<div class="answers">
+	<% @question.answers.each do |ans| %>
+		<%= render partial: "/answers/answer", locals: { answer: ans } %>
 	<% end %>
-
-	<hr>
-	<% answer.comments.each do |comment| %>
-		<div class="well">
-			<%= comment.body %>  
-			<%= standard_date(comment.created_at) %>
-			
-			<%= " | Comment by: #{comment.user_first_name}  " %> 
-			<%= link_to "Delete comment", answer_comment_path(answer.id, comment.id), method: :delete, data: {confirm: "delete this comment for real?"}, class: "btn btn-sm btn-danger" %>
-		</div>
-	<% end %>
-
-<% end %>
+</div>
