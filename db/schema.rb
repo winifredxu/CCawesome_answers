@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203230607) do
+ActiveRecord::Schema.define(version: 20150203233422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,15 @@ ActiveRecord::Schema.define(version: 20150203230607) do
   add_index "favorites", ["question_id"], name: "index_favorites_on_question_id", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
+  create_table "followings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "follower_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "followings", ["user_id"], name: "index_followings_on_user_id", using: :btree
+
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "question_id"
@@ -142,6 +151,7 @@ ActiveRecord::Schema.define(version: 20150203230607) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "questions"
   add_foreign_key "favorites", "users"
+  add_foreign_key "followings", "users"
   add_foreign_key "likes", "questions"
   add_foreign_key "likes", "users"
   add_foreign_key "questions", "users"
