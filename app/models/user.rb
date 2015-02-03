@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   has_many :favorites, dependent: :nullify #associate with FAVORITE model
   has_many :favorited_questions, through: :favorites, source: :question
 
+  has_many :collaborations, dependent: :destroy
+  has_many :collaborated_questions, through: :collaborations, source: :question
+
+
   def has_liked?(question)
   	#Like.where(user_id: id, question_id: question.id).present? 
   	liked_questions.include? question
