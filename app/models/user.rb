@@ -16,6 +16,13 @@ class User < ActiveRecord::Base
   has_many :collaborations, dependent: :destroy
   has_many :collaborated_questions, through: :collaborations, source: :question
 
+  def full_name
+    if (first_name || last_name)
+      "#{first_name} #{last_name}".squeeze(" ").strip
+    else
+      email
+    end
+  end
 
   def has_liked?(question)
   	#Like.where(user_id: id, question_id: question.id).present? 
