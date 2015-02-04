@@ -56,6 +56,7 @@ gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.
 # both below are for file attachments, carrierwave is preferred, while paperclip is easier to use/setup
 gem 'carrierwave'  
 gem "paperclip", "~> 4.2"
+gem 'mini_magick'
 
 group :development do 
         gem "colorize"

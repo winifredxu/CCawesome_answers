@@ -1,12 +1,19 @@
 <!--h1 class="ex" style="display: inline-block">Example</h1-->
 <h1><%= @question.title %></h1>
-<p><%= @question.body %></p>
-<p>Categories: <%= @question.categories.map(&:name).join(", ") %></p>
-<p>Created by: <%= @question.user_first_name %></p>
-<p>View count: <%= @question.view_count %></p>
-<p>Like count: <%= @question.likes_count %></p>
-<p>Favorite count: <%= @question.favorites_count %></p>
-<p> Created on: <%= @question.created_at.strftime("%Y-%B-%d") %></p>
+<div class="col-md-9">
+	<p><%= @question.body %></p>
+	<!--	<p>Created on: <%= @question.created_at.strftime("%Y-%B-%d") %></p> -->
+	<p>Created on: <%= stdDate(@question.created_at) %></p>
+	<p>Created by: <%= @question.user_first_name %></p>
+	<p>Categories: <%= @question.categories.map(&:name).join(", ") %></p>
+	<p>View count: <%= @question.view_count %></p>
+	<p>Like count: <%= @question.likes_count %></p>
+	<p>Favorite count: <%= @question.favorites_count %></p>
+</div>
+<div class="col-md-3">  <!-- use with miniMagick image attachment -->
+<%= image_tag @question.image_url(:medium) %>
+</div>
+
 
 <!-- 'cancancan' restriction at Viewer level -->
 <% if can? :manage, @question %>  <!-- if can? :edit, if can? :destroy -->
