@@ -81,7 +81,8 @@ class QuestionsController < ApplicationController
 	end
 
 	def find_question
-		@question = Question.find params[:id]
+		# @question = Question.find params[:id]  -- to use friendlyID url
+		@question = Question.friendly.find params[:id]
 	end
 
 	def question_params

@@ -39,9 +39,14 @@ class Question < ActiveRecord::Base
 #scope :last_z_days, lambda { |z| where("created_at > ?", num.days.ago) }
 
 
+=begin
 	def to_param  # friendly URL IDs, overwrites the default to_param of just :id
 		"#{id}-#{title}".parameterize
 	end
+=end
+	# below 2 lines are for using Friendly ID gem
+	extend FriendlyId
+	friendly_id :title, use: :slugged
 
 	def likes_count
 		likes.count    # length() is less accurate than count() in the DB.

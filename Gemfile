@@ -50,6 +50,7 @@ gem 'delayed_job_active_record'  #for background process of blocking tasks
 gem 'delayed_job_web'         #UI for seeing the queued tasks
 
 gem 'simple_form'  #for simple_form usage
+gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 group :development do 
         gem "colorize"

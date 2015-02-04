@@ -50,7 +50,8 @@ class AnswersController < ApplicationController
 	end
 	def find_answer
 		# @answer = Answer.find params[:id]
-		@answer= current_user.answers.find params[:id]  #only find answers belong to that user
+		# @answer= current_user.answers.find params[:id]  #only find answers belong to that user
+		@answer= current_user.answers.friendly.find params[:id]
 	end
 	def answer_params
 		# use strong params to ensure only the fields explicitly stated are allowed
