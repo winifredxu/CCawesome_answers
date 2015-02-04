@@ -224,7 +224,7 @@ DEPENDENCIES
   awesome_print
   bootstrap-sass
   byebug
-  cancancan
+  cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
   colorize
   delayed_job_active_record

@@ -2,6 +2,17 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new  #if user is not logged in, then create guest user is never nil.
+
+    can :manage, Question do |question|
+        question.user == user
+    end
+
+    # add the code below if you want teammates to have EDIT access, see changes in 'edit' and 'update' methods in questions_controller.rb
+    can :edit, :update, Question do | q |
+        q.user == user || q.collaborators.include?(user)
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

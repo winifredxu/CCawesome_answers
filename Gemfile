@@ -41,7 +41,7 @@ gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
 gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
 #gem 'autoprefixer'  # used for SASS for bootstrap
 gem 'devise'         # authentication module
-gem 'cancancan'      # authorization Gem for Ruby on Rails
+gem 'cancancan', '~> 1.10' # authorization Gem for Ruby on Rails
 
 #gem 'haml-rails'
 #gem 'slim-rails'

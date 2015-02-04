@@ -1,8 +1,9 @@
 class QuestionsController < ApplicationController
 	before_action :find_question, only: [:show, :edit, :update, :destroy] #:new, :create, :index does not need individual element IDs
 	before_action :authenticate_user!, except: [:index, :show]
+	#before_action :restrict_access, only: [:edit, :update, :destroy]
+	before_action :restrict_access, only: [:destroy]
 
-	
 	# used to show the form to create the resource, "new" action leads to "create" submit in form
 	def new
 		@question = Question.new
@@ -60,6 +61,7 @@ class QuestionsController < ApplicationController
 	# "edit" action leads to "update" submit in form
 	def edit
 		#find is set in before_action
+		redirect_to root_path, alert: "access denied" unless can? "edit", @question
 	end
 
 	def update
@@ -67,7 +69,8 @@ class QuestionsController < ApplicationController
 		#question_params was a variable before, now set as a method below
 
 		if @question.update question_params
-			redirect_to @question, notice: "Question updated successfully"
+			#redirect_to @question, notice: "Question updated successfully"
+			redirect_to root_path, alert: "access denied" unless can? "update", @question
 		else
 			# render "questions/edit"
 			render :edit
@@ -90,6 +93,13 @@ class QuestionsController < ApplicationController
 		params.require(:question).permit(:title, :body, 
 				{category_ids: []}, 
 				{collaboration_ids: []} )
+	end
+
+	def restrict_access
+		# 'cancancan' controller level restrictions
+		unless can? :manage, @question
+			redirect_to root_path, alert: "access denied" 
+		end
 	end
 
 end
