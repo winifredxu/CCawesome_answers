@@ -6,26 +6,11 @@
 	</ul>
 <% end %>
 
-<%= form_for @question do |f| %>
-	<div class="form-group">
-		<%= f.label :title %>
-		<%= f.text_field :title, class: "form-control"  %>
-	</div>
-	<br>
-	<div class="form-group">
-		<%= f.label :body %>
-		<%= f.text_area :body, class: "form-control"  %>
-	</div>
-	<br>
-	<div class="form-group">
-		<%= f.label :category_ids %>
-		<%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-	</div>
-	<div class="form-group">
-		<%= f.label :collaboration_ids %>
-		<%# see documentation on collaboration_check_boxes %>
-		<%= f.collaboration_check_boxes :collaboration_ids, User.all, :id, :full_name %>
-	</div>
-	<br>
+<%= simple_form_for @question, html: { class: 'form-horizontal' } do |f| %>
+	<%= f.input :title, label: "Question title", input_html: { style: "width: 100px"} %>
+	<%= f.input :body, label: "Question body", label_html: {style: "font-size: 14px"} %>
+	<%= f.association :categories, as: :check_boxes %>
+	<%= f.association :collaborators, as: :check_boxes, label_method: :full_name %>
+
 	<%= f.submit class: "btn btn-primary" %>
 <% end %>

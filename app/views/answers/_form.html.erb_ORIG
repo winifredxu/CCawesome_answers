@@ -7,16 +7,13 @@
 <% end %>
 
 <%# form_for @answer, url: question_answers_path(@question) do |f| %>
-<%= simple_form_for [@question, @answer], html: { class: 'form-horizontal' }, 
-		remote:true do |f| %>  
+<%= form_for [@question, @answer], remote:true do |f| %>  
 <!-- remote:true is so the form_for is sent as JS -->
 <!-- form_for submit to POST /question/:id/answer  by convention -->
-<!--
 	<div class="form-group">
 		<%= f.label :body %>
 		<%= f.text_area :body, class: "form_control" %>
 	</div>
--->
-	<%= f.input :body %>
+
 	<%= f.submit class: "btn btn-primary" %> 
 <% end %>

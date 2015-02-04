@@ -33,6 +33,9 @@ class User < ActiveRecord::Base
       email
     end
   end
+  
+  # alias_method :name, :full_name
+
 
   def has_liked?(question)
   	#Like.where(user_id: id, question_id: question.id).present? 

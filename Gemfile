@@ -49,6 +49,8 @@ gem 'devise'         # authentication module
 gem 'delayed_job_active_record'  #for background process of blocking tasks
 gem 'delayed_job_web'         #UI for seeing the queued tasks
 
+gem 'simple_form'  #for simple_form usage
+
 group :development do 
         gem "colorize"
         gem "interactive_editor"

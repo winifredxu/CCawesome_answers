@@ -13,8 +13,8 @@ class Question < ActiveRecord::Base
   has_many :categorizations, dependent: :destroy
   has_many :categories, through: :categorizations
   
-  has_many :collabortions, dependent: :destroy
-  has_many :collaborators, through: :collabortions, source: :user
+  has_many :collaborations, dependent: :destroy
+  has_many :collaborators, through: :collaborations, source: :user
 
 	validates :title, presence: true, uniqueness: {scope: :body, case_sensitive: false}
 	validates :body, presence: { message: "must be provided!"}
