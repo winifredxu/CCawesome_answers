@@ -38,6 +38,11 @@ class Question < ActiveRecord::Base
 #scope :last_y_days, lambda { |y| order("updated_at  < CURRENT_DATE - INTEVAL '#{}'")}
 #scope :last_z_days, lambda { |z| where("created_at > ?", num.days.ago) }
 
+
+	def to_param  # friendly URL IDs, overwrites the default to_param of just :id
+		"#{id}-#{title}".parameterize
+	end
+
 	def likes_count
 		likes.count    # length() is less accurate than count() in the DB.
 	end

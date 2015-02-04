@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
 			#show the form again with error
 			
 			#render "questions/new" -- the new.html.erb again here, short hand below	
-			render :new  # layout: new_layout
+			render :new  # layout: new_layout, render 'new.html.erb'
 
 		end
 	end
@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
 		@answer = Answer.new
 #		@answers = @question.answers   # move this to show.html.erb @question.answers.each
 		respond_to do |format|
-			format.html { render }
+			format.html { render }  #render 'show.html.erb'
 			format.json { render json: @question.to_json }
 			format.text { render text: @question.title }
 			format.xml  { render xml: @question.to_xml }

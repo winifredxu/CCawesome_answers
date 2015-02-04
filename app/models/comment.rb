@@ -8,7 +8,9 @@ class Comment < ActiveRecord::Base
   def question
   	answer.question
   end
+
   def user_first_name
   	user.first_name if user
   end
+  
 end

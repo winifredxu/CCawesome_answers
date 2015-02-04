@@ -1,7 +1,3 @@
-alert("hello");
-alert(<%=@answer.errors.full_messages%>);
-
- 
 <% if @answer.errors.any? %>
   $(".answer-form").html("<%= j render "/answers/form" %>"); 
 <% else %>
