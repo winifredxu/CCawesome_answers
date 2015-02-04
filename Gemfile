@@ -53,7 +53,9 @@ gem 'delayed_job_web'         #UI for seeing the queued tasks
 gem 'simple_form'  #for simple_form usage
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
-
+# both below are for file attachments, carrierwave is preferred, while paperclip is easier to use/setup
+gem 'carrierwave'  
+gem "paperclip", "~> 4.2"
 
 group :development do 
         gem "colorize"

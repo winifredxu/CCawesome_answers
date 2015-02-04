@@ -1,6 +1,10 @@
+<%#= form_for @question, multipart: true  do |f|    <--- multipart is for the image attachment upload  %>
 <%= simple_form_for @question, html: { class: 'form-horizontal' } do |f| %>
 	<%= f.input :title, label: "Question title", input_html: { style: "width: 100px"} %>
 	<%= f.input :body, label: "Question body", label_html: {style: "font-size: 14px"} %>
+
+  <%= f.input :image %>  <!-- carrierwave attachment -->
+
 	<%= f.association :categories, as: :check_boxes %>
 	<%= f.association :collaborators, as: :check_boxes, label_method: :full_name %>
 

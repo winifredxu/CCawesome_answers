@@ -90,7 +90,7 @@ class QuestionsController < ApplicationController
 
 	def question_params
 		# use strong params to ensure only the fields explicitly stated are allowed
-		params.require(:question).permit(:title, :body, 
+		params.require(:question).permit(:title, :body, :image,
 				{category_ids: []}, 
 				{collaboration_ids: []} )
 	end

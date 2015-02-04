@@ -1,5 +1,8 @@
 class Question < ActiveRecord::Base
 	belongs_to :user
+
+	mount_uploader :image, ImageUploader # carrierwave - attachment gem usage
+	
 	has_many :answers, dependent: :destroy  #one to many ERD related, 
 	# some times has dependent: nullify
 	has_many :comments, through: :answers  #associate question with many comments, through answers
