@@ -58,6 +58,8 @@ gem 'carrierwave'
 gem "paperclip", "~> 4.2"
 gem 'mini_magick'
 
+gem 'fog'  # interface with S3, google, etc, all service providers
+
 group :development do 
         gem "colorize"
         gem "interactive_editor"
