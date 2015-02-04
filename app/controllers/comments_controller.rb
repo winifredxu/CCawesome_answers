@@ -34,13 +34,13 @@ class CommentsController < ApplicationController
 	private
 
 	def find_answer
-		#@answer = Answer.find params[:answer_id]
-		@answer = Answer.friendly.find params[:answer_id]
+		@answer = Answer.find params[:answer_id]
 	end
+
 	def find_comment
-		#@comment = Comment.find params[:id]
-		@comment = Comment.friendly.find params[:id]
+		@comment = Comment.find params[:id]
 	end
+	
 	def comment_params
 		# use strong params to ensure only the fields explicitly stated are allowed
 		params.require(:comment).permit(:body)

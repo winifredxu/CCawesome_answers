@@ -41,6 +41,7 @@ gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
 gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
 #gem 'autoprefixer'  # used for SASS for bootstrap
 gem 'devise'         # authentication module
+gem 'cancancan'      # authorization Gem for Ruby on Rails
 
 #gem 'haml-rails'
 #gem 'slim-rails'
@@ -51,6 +52,8 @@ gem 'delayed_job_web'         #UI for seeing the queued tasks
 
 gem 'simple_form'  #for simple_form usage
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
+
 
 group :development do 
         gem "colorize"
