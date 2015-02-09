@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 			else
 				format.js { render } #rendering "/comments/create.js.erb" file
 #				format.html { render "questions/show" }  #render takes the template, this is the ERB file path
-#				format.html { redirect_to @answer.question, alert: "comment FAILED!"}
+				format.html { render question_path(@comment.question), alert: "comment FAILED!"}  #@answer.question == @comment.question
 			end
 		end
 	end

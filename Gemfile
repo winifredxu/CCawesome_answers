@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -32,7 +32,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# gem "colorize"   # added to the group:development below
 
 #gem 'eventmachine'  # some people had problems with DB 
 gem 'thin'  #this requires the web server to be Thin, only works for Thin though
@@ -47,6 +46,7 @@ gem 'cancancan', '~> 1.10' # authorization Gem for Ruby on Rails
 #gem 'slim-rails'
 #gem 'premailer' #inline styling for Emails
 
+
 gem 'delayed_job_active_record'  #for background process of blocking tasks
 gem 'delayed_job_web'         #UI for seeing the queued tasks
 
@@ -54,18 +54,18 @@ gem 'simple_form'  #for simple_form usage
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 # both below are for file attachments, carrierwave is preferred, while paperclip is easier to use/setup
-gem 'carrierwave'  
-gem "paperclip", "~> 4.2"
-gem 'mini_magick'
+gem 'carrierwave'           #for attachment files
+gem "paperclip", "~> 4.2"   #another gem for attachment files
+gem 'mini_magick'           #??
 
 gem 'fog'  # interface with S3, google, etc, all service providers
 
 group :development do 
-        gem "colorize"
-        gem "interactive_editor"
-        gem "hirb"
-        gem "awesome_print"
-        gem "letter_opener"
+  gem "colorize"
+  gem "interactive_editor"
+  gem "hirb"
+  gem "awesome_print"
+  gem "letter_opener" #to do with email client/mailer(?)
 end
 
 group :development, :test do
@@ -83,4 +83,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
