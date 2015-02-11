@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 			else
 				format.js { render } #rendering "/comments/create.js.erb" file
 #				format.html { render "questions/show" }  #render takes the template, this is the ERB file path
-				format.html { render question_path(@comment.question), alert: "comment FAILED!"}  #@answer.question == @comment.question
+				format.html { render question_path(@comment.question), alert: "comment FAILED!"}  #or use @answer.question which is the same as @comment.question
 			end
 		end
 	end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 		# use comment.rb's delegate method instead
 		respond_to do |format|
 			format.js { render } #rendering "/comments/destroy.js.erb" file
-			format.html { redirect_to @comment.question, notice: "Comment deleted successfully" }
+			format.html { redirect_to question_path(@comment.question), notice: "Comment deleted successfully" }  # or use @answer.question for consistency in this file
 		end
 	end
 

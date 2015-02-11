@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users  # added by gem 'devise'
-    get "/hello"  =>  "welcome#hello"  
+  devise_for :users  # use with gem 'devise'
+
+  get "/hello"  =>  "welcome#hello"  
   get "/about"  =>  "welcome#about"
 
   #get "/questions/new" => "questions#new", as: "new_question"
