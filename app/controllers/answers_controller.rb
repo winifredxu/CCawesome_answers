@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
 		respond_to do |format|  # this is for AJAX
 
 			if @answer.save 
-				#AnswersMailer.notify_question_owner(@answer).deliver
+				#AnswersMailer.notify_question_owner(@answer).deliver   #use delayed_job below
 				AnswersMailer.notify_question_owner(@answer).deliver_later
 				#redirect_to question_path(@question)  --> this is the long hand
 				#redirect_to @question, notice: "Answer created successfully."

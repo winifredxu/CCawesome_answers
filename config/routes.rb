@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
-
+Rails.application.routes.draw do ActiveAdmin::Devise.config
+  ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users  # use with gem 'devise'
 
   get "/hello"  =>  "welcome#hello"  

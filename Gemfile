@@ -39,7 +39,7 @@ gem 'animate-rails'  # this is for animation through CSS effects
 gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
 gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
 #gem 'autoprefixer'  # used for SASS for bootstrap
-gem 'devise'         # authentication module
+gem 'devise'         # User authentication module
 gem 'cancancan', '~> 1.10' # authorization Gem for Ruby on Rails
 
 #gem 'haml-rails'
@@ -60,15 +60,19 @@ gem 'mini_magick'           #??
 
 gem 'fog'  # interface with S3, google, etc, all service providers
 
+gem 'activeadmin', github: 'activeadmin' #Active Admin gem, uses 'gem Devise'
+
 group :development do 
   gem "colorize"
   gem "interactive_editor"
   gem "hirb"
   gem "awesome_print"
   gem "letter_opener" #to do with email client/mailer(?)
+  gem "rails-erd"  # graphical ERD tool to generate PDF
 end
 
 group :development, :test do
+#  gem "pry"    # Easily debug from your console with `binding.pry`
 #  gem "pry-rails"
 #  gem "pry-byebug"
   gem "quiet_assets"  #rails log does not show the assets (js, css) related entries
@@ -81,5 +85,5 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  ####  gem 'spring'  #comment out due to problems with active_admin
 end
