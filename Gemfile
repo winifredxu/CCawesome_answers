@@ -72,14 +72,17 @@ group :development do
 end
 
 group :development, :test do
-#  gem "pry"    # Easily debug from your console with `binding.pry`
-#  gem "pry-rails"
-#  gem "pry-byebug"
+  gem "pry"    # Easily debug from your console with `binding.pry`
+  gem "pry-rails"
+  gem "pry-byebug"
+
   gem "quiet_assets"  #rails log does not show the assets (js, css) related entries
   gem 'faker'  #CodeCore added for homework purposes, generates a bunch of Fake information/data
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem "better_errors" # shows more meaningful error messages
+  gem "binding_of_caller" #works with "better_error" to give local variable inspection
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

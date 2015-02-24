@@ -66,6 +66,10 @@ GEM
       json
     awesome_print (1.6.1)
     bcrypt (3.1.10)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.3)
@@ -90,6 +94,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.5)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -251,6 +256,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
     mime-types (2.4.3)
     mini_magick (4.1.0)
     mini_portile (0.6.2)
@@ -270,6 +276,15 @@ GEM
     pg (0.18.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.0)
@@ -380,6 +395,8 @@ DEPENDENCIES
   activeadmin!
   animate-rails
   awesome_print
+  better_errors
+  binding_of_caller
   bootstrap-sass
   byebug
   cancancan (~> 1.10)
@@ -400,6 +417,9 @@ DEPENDENCIES
   mini_magick
   paperclip (~> 4.2)
   pg
+  pry
+  pry-byebug
+  pry-rails
   quiet_assets
   rails (= 4.2.0)
   rails-erd
