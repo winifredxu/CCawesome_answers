@@ -39,8 +39,7 @@ gem 'animate-rails'  # this is for animation through CSS effects
 gem 'bootstrap-sass' # this is to include using 'bootstrap' CSS
 gem 'rails_12factor' # for bootstrap to work while pushed to Heroku
 #gem 'autoprefixer'  # used for SASS for bootstrap
-gem 'devise'         # User authentication module
-gem 'cancancan', '~> 1.10' # authorization Gem for Ruby on Rails
+
 
 #gem 'haml-rails'
 #gem 'slim-rails'
@@ -60,7 +59,14 @@ gem 'mini_magick'           #??
 
 gem 'fog'  # interface with S3, google, etc, all service providers
 
+gem 'devise'         # User authentication module
+gem 'cancancan', '~> 1.10' # authorization Gem for Ruby on Rails
 gem 'activeadmin', github: 'activeadmin' #Active Admin gem, uses 'gem Devise'
+gem 'omniauth-twitter'   #omniauth gem included, this specific one for twitter
+gem 'twitter'         #need it to push the user action to Twitter
+
+gem 'virtus'  #Service objects
+
 
 group :development do 
   gem "colorize"

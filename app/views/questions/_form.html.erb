@@ -3,6 +3,7 @@
 	<%= f.input :title, label: "Question title", input_html: { style: "width: 100px"} %>
 	<%= f.input :body, label: "Question body", label_html: {style: "font-size: 14px"} %>
 
+  <%= f.input :tweet_it, as: :boolean, :value = false %> <!-- checkbox for twitter -->
   <%= f.input :image %>  <!-- carrierwave attachment -->
 
 	<%= f.association :categories, as: :check_boxes %>

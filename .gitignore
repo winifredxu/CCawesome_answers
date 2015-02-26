@@ -8,6 +8,8 @@
 /.bundle
 /config/initializers/email_vars.rb
 /config/initializers/s3_vars.rb
+/config/initializers/twitter_vars.rb
+
 
 # Ignore all logfiles and tempfiles.
 /log/*

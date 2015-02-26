@@ -1,6 +1,9 @@
 class Question < ActiveRecord::Base
 	belongs_to :user
 
+	attr_accessor :tweet_it
+
+
 	mount_uploader :image, ImageUploader # carrierwave - attachment gem usage
 	
 	has_many :answers, dependent: :destroy  #one to many ERD related, 

@@ -20,6 +20,7 @@
 				<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
 			<% else %>
 				<%= link_to "Sign In", new_user_session_path, method: :get %>
+				<%= link_to "Sign in with Twitter", user_omniauth_authorize_path(provider: :twitter) %>
 			<% end %>
 
 			<!-- flash notice and alert for gem 'devise' usage -->
@@ -38,6 +39,7 @@
 
 			
 			<%= yield %>
+			
 		</div>
 	</body>
 </html>

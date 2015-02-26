@@ -1,7 +1,10 @@
 Rails.application.routes.draw do ActiveAdmin::Devise.config
   ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users  # use with gem 'devise'
+  devise_for :users,  # use with gem 'devise'
+    # use with omniauth
+    controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
 
   get "/hello"  =>  "welcome#hello"  
   get "/about"  =>  "welcome#about"

@@ -18,10 +18,15 @@ class QuestionsController < ApplicationController
 		@question.user = current_user # this adds the user_id to the questions DB table
 		
 		if @question.save
+			if @question.tweet_it == 
+				service = Twitter::SendTweet.new(user: current_user, tweet_body: @question.title)
+				service.call
+			end
+
 			#render text: "thank you!"
 			# shortcut for this is below:  redirect_to question_path(@question)
 
-			redirect_to @question, notice: "Question created successfully"
+			redirect_to @question, notice: "Question created successfully."
 		else
 			#show the form again with error
 			
@@ -90,7 +95,7 @@ class QuestionsController < ApplicationController
 
 	def question_params
 		# use strong params to ensure only the fields explicitly stated are allowed
-		params.require(:question).permit(:title, :body, :image,
+		params.require(:question).permit(:title, :body, :image, :tweet_it,
 				{category_ids: []}, 
 				{collaboration_ids: []} )
 	end
