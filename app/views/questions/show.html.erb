@@ -18,8 +18,8 @@
 
 <!-- 'cancancan' restriction at Viewer level -->
 <% if can? :manage, @question %>  <!-- if can? :edit, if can? :destroy -->
-	<%= link_to "EditQ", edit_question_path(@question) %>
-	<%= link_to "DeleteQ", 	question_path(@question), 
+	<%= link_to "EditQ", edit_question_path(@question), class: "btn btn-info" %>
+	<%= link_to "DeleteQ", 	question_path(@question), class: "btn btn-danger",
 		method: :delete, 	data: {confirm: "are you sure?"} %>
 <% end %>
 
